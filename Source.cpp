@@ -71,12 +71,6 @@ Sphere spheres[] = {
 	{ 600.0f,	{ 50.0f, 681.6f - .77f, 81.6f },	{ 2.0f, 1.8f, 1.6f }, { 0.0f, 0.0f, 0.0f },		DIFF }  // Light
 };
 
-// CLAMP FUNCTION
-inline float clamp(float x) { return x < 0.0f ? 0.0f : x > 1.0f ? 1.0f : x; }
-
-// CONVERTS FLOATS TO INTEGERS TO BE SAVED in PPM File
-inline int toInt(float x) { return int(pow(clamp(x), 1 / 2.2) * 255 + .5); }  // convert RGB float in range [0,1] to int in range [0, 255] and perform gamma correction of 2.2
-
 // INTERSECTS ray with SCENE
 inline bool intersect_scene(const Ray& r, float& t, int& id) {
 	float n = sizeof(spheres) / sizeof(Sphere), d, inf = t = 1e20;  // t is distance to closest intersection, initialise t to a huge number outside scene
